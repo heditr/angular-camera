@@ -15,7 +15,7 @@ angular.module('omr.directives', [])
           <canvas id="ng-photo-canvas" width="{{width}}" height="{{height}}" style="display:none;"></canvas>
         </div>
         <div class="ng-camera-controls" ng-hide="hideUI">
-          <button class="btn ng-camera-take-btn" ng-click="takePicture()">Take Picture</button>
+          <button class="btn ng-camera-take-btn" ng-click="takePicture($event)">Take Picture</button>
         </div>
       </div>'
     replace: false
@@ -74,7 +74,8 @@ angular.module('omr.directives', [])
       ###*
       * @description Capture current state of video stream as photo
       ###
-      scope.takePicture = ->
+      scope.takePicture = (event) ->
+        event.preventDefault();
         canvas = window.document.getElementById('ng-photo-canvas')
 
         # Get countdown time in seconds from attribute
